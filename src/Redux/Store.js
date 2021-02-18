@@ -1,20 +1,29 @@
-import {UPDATE_CONNECTION_TYPE,UPDATE_CONNECTION_STATUS} from '../Actions/connectionAction';
+import { persistStore, persistReducer } from "redux-persist";
+import { applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { createStore, combineReducers } from 'redux'
+import AsyncStorage from "@react-native-community/async-storage";
+import { connectionReducer } from "./Reducers/connectionReducer";
+import SettingsReducer from "./Reducers/SettingsReducer";
 
-const initialState = {
-    online:true,
-    connectionType:null,
+
+
+export const persistConfig = {
+    key: "persist",
+    storage: AsyncStorage
 };
+const rootReducer = combineReducers({
 
-const connectionReducer = (state=initialState,action)=>{
-    switch (action.type){
-        case UPDATE_CONNECTION_TYPE:
-            return {connectionType:action.payload}
-        case UPDATE_CONNECTION_STATUS:
-            // const {online} = action.payload
-            return {online:action.payload}
-        default:
-            return state
-    }
-};
+     connectionReducer,
+    settings: SettingsReducer,
+})
 
-export {connectionReducer};
+
+const middlewares = [thunk];
+
+const reducer = persistReducer(
+    persistConfig,
+    (rootReducer)
+);
+export default store = createStore(reducer, applyMiddleware(...middlewares));
+export const persistor = persistStore(store);
