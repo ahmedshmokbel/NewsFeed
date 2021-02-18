@@ -22,31 +22,31 @@ export const rtlView = () => {
             writingDirection: 'ltr'
         }
     }
-    // return lang "ar" ? { flexDirection: "row-reverse" }:{ flexDirection: "row-reverse" };
-};
+ };
 
 
 
 
-
-const fixedHeight = 812;
-const fixedWidth = 375;
-
-function responsiveHeight(originalValue) {
-    return ((Dimensions.get('window').height * originalValue) / fixedHeight);
-}
-
-function responsiveWidth(originalValue) {
-    return ((Dimensions.get('window').width * originalValue) / fixedWidth);
-}
-
-function scaleFont(size) {
-    const newSize = size * Dimensions.get('window').width / fixedWidth;
-    if (Platform.OS === 'ios') {
-        return Math.round(PixelRatio.roundToNearestPixel(newSize))
-    } else {
-        return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
-    }
-}
-
-export default { responsiveHeight, responsiveWidth, scaleFont };
+ const fixedHeight = 812;
+ const fixedWidth = 375;
+ 
+ function responsiveHeight(originalValue)
+ {
+     return ((Dimensions.get('window').height * originalValue) / fixedHeight);
+ }
+ 
+  function responsiveWidth(originalValue)
+ {
+     return ((Dimensions.get('window').width * originalValue) / fixedWidth);
+ }
+ 
+ function scaleFont(size) {
+     const newSize = size * Dimensions.get('window').width / fixedWidth;
+     if (Platform.OS === 'ios') {
+       return Math.round(PixelRatio.roundToNearestPixel(newSize))
+     } else {
+       return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+     }
+ }
+ 
+ export default { responsiveHeight , responsiveWidth , scaleFont };

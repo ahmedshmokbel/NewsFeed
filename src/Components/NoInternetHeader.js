@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Platform } from 'react-native'
-import { responsiveHeight, responsiveWidth, scaleFont } from '../Utilities/UIHelpers'
-import * as Animatable from 'react-native-animatable';
+import ResponsiveModule from '../Utilities/UIHelpers'
+const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;import * as Animatable from 'react-native-animatable';
 import i18n from 'i18n-js';
 
 const NoIntenetHeader = ({ }) => {
