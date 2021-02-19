@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import NewsFeedScreen from '../Screens/NewsFeedScreen';
 import i18n from 'i18n-js';
+import NewsFeedDetails from '../Screens/NewsFeedDetails';
 const NewsFeedStack = createStackNavigator()
 
 
@@ -18,6 +19,16 @@ export const MainNavigation = (props) => (
                 headerBackTitleVisible: false,
             }} />
 
+
+        <NewsFeedStack.Screen name='Details'
+            component={NewsFeedDetails}
+            titile={'ddd'}
+            options={{
+                title: i18n.t('Details'),
+                headerTintColor: 'white',
+                headerStyle: { backgroundColor: '#D63447' },
+                headerBackTitleVisible: false,
+            }} />
 
 
     </NewsFeedStack.Navigator>
