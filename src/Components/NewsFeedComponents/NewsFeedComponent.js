@@ -8,17 +8,19 @@ export default NewsFeedComponent = (props) => {
 
 
     return (
-        <TouchableOpacity style={styles.rederItems} onPress={props.onPress}
+        <TouchableOpacity onPress={props.onPress}
             key={props.index}>
-            <Image
-                source={{ uri: props.urlToImage }}
-                style={styles.Img}
-            />
-            <View style={{ marginTop: responsiveHeight(5) }} >
+            <View style={styles.rederItems}>
+                <Image
+                    source={{ uri: props.urlToImage }}
+                    style={styles.Img}
+                />
+
+            </View>
+            <View style={{ marginTop: responsiveHeight(5) ,marginHorizontal:responsiveWidth(15)}} >
                 <Text style={{ fontSize: 15, fontWeight: 'bold', }}>{props.title}</Text>
 
             </View>
-
         </TouchableOpacity>
 
     )
@@ -27,12 +29,12 @@ export default NewsFeedComponent = (props) => {
 const styles = StyleSheet.create({
 
     rederItems: {
-        marginVertical: 25,
+        marginTop: responsiveHeight(25),
         borderRadius: 10,
         justifyContent: 'center',
-        backgroundColor:'white',
+        backgroundColor: 'white',
         alignSelf: 'center',
-        maxHeight: responsiveHeight(240), minHeight: responsiveHeight(240),
+        maxHeight: responsiveHeight(220), minHeight: responsiveHeight(220),
         ...Platform.select({
             ios: {
                 width: 360,

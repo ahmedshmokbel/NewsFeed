@@ -73,8 +73,9 @@ export default NewsFeedScreen = ({ navigation, props }) => {
     return (
 
         <View style={[rtlView(), styles.container]} >
-            <View style={{ marginTop: responsiveHeight(40), paddingBottom: responsiveHeight(50) }}>
-                <SearchBar value={search} onChangeText={(text) => Search(text)} onClear={onClear} />
+            <SearchBar value={search} onChangeText={(text) => Search(text)} onClear={onClear} />
+
+            <View style={{justifyContent: 'center', alignSelf:'center' }}>
                 {newsFeedState.isLoading ?
                     <ActivityIndicator size='large' color='black' />
                     :
@@ -103,8 +104,8 @@ export default NewsFeedScreen = ({ navigation, props }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
-        justifyContent: 'center'
+        marginTop: responsiveHeight(0), paddingBottom: responsiveHeight(80)
+        
     },
 
 });

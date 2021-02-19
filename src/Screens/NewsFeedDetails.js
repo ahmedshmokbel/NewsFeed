@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react';
-import { View, StyleSheet, ScrollView, Image, Text, Linking, } from "react-native";
+import { View, StyleSheet, ScrollView, Image, Text, Linking, Platform, } from "react-native";
 import { rtlView } from '../Utilities/UIHelpers';
 import ResponsiveModule from '../Utilities/UIHelpers'
 import moment from 'moment'
@@ -21,7 +21,7 @@ export default NewsFeedDetails = ({ route, navigation }) => {
         <ScrollView style={[rtlView(), styles.container]} >
             <Image source={{ uri: article.urlToImage }} style={styles.Img} />
             <View style={{
-                bottom: 0, top: responsiveHeight(278), height: 80, width: '100%',
+                bottom: 0, top:Platform.OS==='ios'? responsiveHeight(278):responsiveHeight(265), height: 80, width: '100%',
                 position: 'absolute', backgroundColor: '#000000AA', alignSelf: 'center',
                 justifyContent: 'center'
             }}>
