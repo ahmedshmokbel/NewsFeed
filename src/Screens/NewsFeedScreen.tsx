@@ -6,6 +6,7 @@ import { GetNewsFeedAction, } from '../Redux/Actions/NewsFeedActions'
 import { useDispatch, useSelector } from 'react-redux';
 import NewsFeedComponent from '../Components/NewsFeedComponents/NewsFeedComponent';
 import SearchBar from '../Components/SearchBar';
+import { ThemeStyle } from '../Utilities/Theme';
 const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
 
@@ -31,11 +32,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
     const [load, setLoad] = useState<Boolean>(false)
     const [refreshing, setRefreshing] = useState(false);
     const colorScheme = useColorScheme();
-
-     const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
-    const themeContainerStyle =
-        colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
-
+ 
  
     const [filterArticle, setFilterArticle] = useState<articale[]>([])
 
@@ -125,7 +122,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
     return (
 
-        <View style={[rtlView(), styles.container, themeContainerStyle]} >
+        <View style={[rtlView(), styles.container, colorScheme === 'light'?ThemeStyle.lightContainer:ThemeStyle.darkContainer]} >
              <SearchBar value={search} onChangeText={(text: string) => Search(text)} onClear={onClear} />
 
             <View style={{ justifyContent: 'center', alignSelf: 'center' }}>

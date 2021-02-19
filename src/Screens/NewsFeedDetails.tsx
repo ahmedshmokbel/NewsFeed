@@ -4,6 +4,8 @@ import { rtlView } from '../Utilities/UIHelpers';
 import ResponsiveModule from '../Utilities/UIHelpers'
 import moment from 'moment'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ThemeStyle } from '../Utilities/Theme';
+import { useColorScheme } from 'react-native-appearance';
 const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
 interface articale {
@@ -27,17 +29,16 @@ export interface RTL {
 
 
 const NewsFeedDetails = ({ route }: any) => {
-
-    const [article, setArticle] = useState<articale>({ title: '', author: '', description: '', content: '', url: '', urlToImage:'', publishedAt: '' });
+    const colorScheme = useColorScheme()
+    const [article, setArticle] = useState<articale>({ title: '', author: '', description: '', content: '', url: '', urlToImage: '', publishedAt: '' });
     useEffect(() => {
         setArticle(route.params.ArticleData)
     }, [])
 
-    console.log(article.urlToImage);
 
     return (
 
-        <ScrollView style={[styles.container]}>
+        <ScrollView style={[styles.container, colorScheme === 'light' ? ThemeStyle.lightContainer : ThemeStyle.darkContainer]}>
             <Image source={{ uri: article.urlToImage }} style={styles.Img} />
             <View style={{
                 bottom: 0, top: Platform.OS === 'ios' ? responsiveHeight(278) : responsiveHeight(265), height: 80, width: '100%',
@@ -47,14 +48,14 @@ const NewsFeedDetails = ({ route }: any) => {
                 <Text style={{ textAlign: 'left', fontSize: scaleFont(18), fontWeight: 'bold', alignSelf: 'center', color: 'white' }}>{article.title}</Text>
             </View>
             <View style={{ marginTop: responsiveHeight(10), marginHorizontal: responsiveWidth(15) }}>
-                <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: 'black' }}>{article.author}</Text>
-                <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: 'grey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
-                <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.description}</Text>
-                <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.content}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: colorScheme === 'light' ? 'black' : 'white' }}>{article.author}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: colorScheme === 'light' ? 'grey' : 'lightgrey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10), color: colorScheme === 'light' ? 'black' : 'white' }}>{article.description}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10), color: colorScheme === 'light' ? 'black' : 'white' }}>{article.content}</Text>
 
 
                 <TouchableOpacity onPress={() => { Linking.openURL(article.url) }}>
-                    <Text style={{ textAlign: 'left', fontSize: scaleFont(13), color: 'blue' }}>{article.url}</Text>
+                    <Text style={{ textAlign: 'left', fontSize: scaleFont(13),color: colorScheme==='light'?'blue':'lightblue' }}>{article.url}</Text>
 
                 </TouchableOpacity>
 

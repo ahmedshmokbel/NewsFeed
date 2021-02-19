@@ -3,6 +3,7 @@
         "UIHelpers",
         "Redux",
         "NewsFeedScreen",
-        "TypeScript"
+        "TypeScript",
+        "Dark Theme"
     ]
 }

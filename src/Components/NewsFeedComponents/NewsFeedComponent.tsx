@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, Dimensions,Platform, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useColorScheme } from 'react-native-appearance';
+import { ThemeStyle } from '../../Utilities/Theme';
 import ResponsiveModule from "../../Utilities/UIHelpers";
 const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
@@ -10,7 +12,7 @@ interface Props {
     onPress:()=>void
 }
 const NewsFeedComponent: React.FC <Props> = props => {
-
+const colorScheme =useColorScheme()
 
     return (
         <TouchableOpacity onPress={props.onPress}
@@ -23,7 +25,7 @@ const NewsFeedComponent: React.FC <Props> = props => {
 
             </View>
             <View style={{ marginTop: responsiveHeight(5), marginHorizontal: responsiveWidth(30) }} >
-                <Text style={{ fontSize: 15, fontWeight: 'bold', }}>{props.title}</Text>
+                <Text style={[{textAlign:'left', fontSize: 15, fontWeight: 'bold', },colorScheme === 'light'?ThemeStyle.lightThemeText:ThemeStyle.darkThemeText]}>{props.title}</Text>
 
             </View>
         </TouchableOpacity>

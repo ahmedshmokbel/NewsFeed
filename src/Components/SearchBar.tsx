@@ -3,6 +3,7 @@ import { View, TextInput, StyleSheet, Dimensions, I18nManager, TouchableOpacity 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 const WIDTH = Dimensions.get('window').width;
 import i18n from 'i18n-js'
+import { useColorScheme } from "react-native-appearance";
 
 interface Props {
     value: string,
@@ -11,10 +12,10 @@ interface Props {
 }
 
  const SearchBar : React.FC<Props> = (props) => {
-
+const colorScheme=useColorScheme()
     return (
         <View style={styles.searchSection}>
-            <MaterialIcons style={styles.searchIcon} name="search" size={30} color={'black'} />
+            <MaterialIcons style={styles.searchIcon} name="search" size={30} color={colorScheme==='light'?'black':'white'} />
             <TextInput
                 style={styles.input}
                 placeholder={i18n.t('Search')}
@@ -22,13 +23,13 @@ interface Props {
 
                 onChangeText={props.onChangeText}
                 underlineColorAndroid="transparent"
-                placeholderTextColor='grey'
+                placeholderTextColor={colorScheme==='light'?'black':'white'}
             />
 
             <TouchableOpacity onPress={props.onClear}>
 
                 <MaterialIcons name='close' onPress={props.onClear}
-                    size={25} style={styles.inlineClose} color={'black'} />
+                    size={25} style={styles.inlineClose} color={colorScheme==='light'?'black':'white'} />
             </TouchableOpacity>
         </View>
 
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
         height: 45, width: WIDTH,
         paddingVertical: 10,
         marginVertical: 8,
-        paddingLeft: 35, left: 10,
+        paddingLeft: 35, left: 20,
         //  marginHorizontal: 5,
         //  backgroundColor: 'white',
         borderColor: 'grey', borderWidth: 0.5,
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     searchIcon: {
         position: 'absolute',
         zIndex: 99,
-        left: 15,
+        left: 20,
         top: 6,
         justifyContent: 'center',
         alignItems: 'center', marginVertical: 10

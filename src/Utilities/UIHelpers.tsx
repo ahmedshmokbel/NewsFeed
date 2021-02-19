@@ -4,8 +4,7 @@ import { I18nManager, Platform, Dimensions, PixelRatio } from "react-native";
 
 export const rtlView = () => {
 
-    console.log('RTLView', I18nManager.isRTL)
-
+ 
     if (I18nManager.isRTL) {
 
         return {

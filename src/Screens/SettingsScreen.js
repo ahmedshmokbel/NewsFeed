@@ -5,8 +5,11 @@ import { I18nManager,View,Text,TouchableOpacity } from 'react-native';
 import * as Updates from 'expo-updates';
 import { rtlView } from '../Utilities/UIHelpers';
 import {ChangeLanguage} from '../Redux/Actions/SettingsActions'
+import { useColorScheme } from 'react-native-appearance';
+import { ThemeStyle } from '../Utilities/Theme';
 
 export default SettingsScreen = () => {
+    const colorScheme=useColorScheme()
 
     const dispatch = useDispatch()
 
@@ -33,14 +36,14 @@ export default SettingsScreen = () => {
 
     return (
 
-        <View style={[rtlView(), { flex: 1, flexDirection: 'row',justifyContent:'center' , alignItems:'center', paddingHorizontal: 60 }]}>
+        <View style={[rtlView(), { flex: 1, flexDirection: 'row',justifyContent:'center' , alignItems:'center', paddingHorizontal: 60 },colorScheme === 'light'?ThemeStyle.lightContainer:ThemeStyle.darkContainer]}>
 
             <TouchableOpacity onPress={() => EnglishLang()} style={{marginHorizontal:30, paddingVertical: 10, alignItems: 'flex-start' }}>
-                <Text >English</Text>
+                <Text style={colorScheme === 'light'?ThemeStyle.lightThemeText:ThemeStyle.darkThemeText}>English</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => ArabicLang()} style={{ paddingVertical: 10, alignItems: 'flex-start' }}>
-                <Text  >العربيه</Text>
+                <Text style={colorScheme === 'light'?ThemeStyle.lightThemeText:ThemeStyle.darkThemeText} >العربيه</Text>
             </TouchableOpacity >
 
 

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const ThemeStyle = StyleSheet.create({
     
     lightContainer: {
-        backgroundColor: '#D0D0C0',
+        backgroundColor: 'white',
     },
     darkContainer: {
         backgroundColor: '#242C40',

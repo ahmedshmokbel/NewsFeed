@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useMemo, useRef, useReducer } from 'react';
 import NetInfo from "@react-native-community/netinfo";
 import { NavigationContainer } from "@react-navigation/native";
- import NoInternetHeader from '../Components/NoInternetHeader'
+import NoInternetHeader from '../Components/NoInternetHeader'
 import i18n from 'i18n-js';
 import { I18nManager } from 'react-native';
 import { TabsScreen } from './MainNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateConnectionStatus } from '../Redux/Actions/ConnectionActions';
- const AppContainer = () => {
+import { useColorScheme } from 'react-native-appearance';
+const AppContainer = () => {
     //state 
     const [online, setOnline] = useState(true);
-    const  dispatch = useDispatch()
+    const dispatch = useDispatch()
     const SettingsState = useSelector((state) => state.settings);
-
+    const colorScheme = useColorScheme()
     useEffect(() => {
 
         i18n.locale = SettingsState.Lang
@@ -33,7 +34,7 @@ import { updateConnectionStatus } from '../Redux/Actions/ConnectionActions';
     useEffect(() => {
         // Subscribe for connection status
         const unsubscribe = NetInfo.addEventListener(state => {
-             dispatch(updateConnectionStatus(state.isConnected));
+            dispatch(updateConnectionStatus(state.isConnected));
             setOnline(state.isConnected);
         });
         return () => {
@@ -43,7 +44,7 @@ import { updateConnectionStatus } from '../Redux/Actions/ConnectionActions';
     return (
         <NavigationContainer>
             {online ? null : <NoInternetHeader />}
-            <TabsScreen />
+            <TabsScreen theme={colorScheme} />
         </NavigationContainer >
     )
 }

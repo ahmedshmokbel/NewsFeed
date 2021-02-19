@@ -10,18 +10,18 @@ import NewsFeedDetails from '../Screens/NewsFeedDetails';
 import SettingsScreen from '../Screens/SettingsScreen';
 const NewsFeedStack = createStackNavigator()
 const BottomTabs = createBottomTabNavigator()
+var Theme = ''
 
-
- const NewsFeedStackScreen = (props) => (
-
+const NewsFeedStackScreen = (props) => (
+    console.log(Theme),
     <NewsFeedStack.Navigator  >
         <NewsFeedStack.Screen name='NewsFeed'
             component={NewsFeedScreen}
             titile={'ddd'}
             options={{
                 title: i18n.t('NewsFeed'),
-                headerTintColor: 'white',
-                headerStyle: { backgroundColor: '#000000DD' },
+                headerTintColor: Theme === 'light' ? '#000000DD' : 'white',
+                headerStyle: { backgroundColor: Theme === 'light' ? 'white' : '#000000DD', },
                 headerBackTitleVisible: false,
             }} />
 
@@ -31,8 +31,8 @@ const BottomTabs = createBottomTabNavigator()
             titile={'ddd'}
             options={{
                 title: i18n.t('Details'),
-                headerTintColor: 'white',
-                headerStyle: { backgroundColor: '#000000DD' },
+                headerTintColor: Theme === 'light' ? '#000000DD' : 'white',
+                headerStyle: { backgroundColor: Theme === 'light' ? 'white' : '#000000DD', },
                 headerBackTitleVisible: false,
             }} />
 
@@ -44,8 +44,8 @@ const BottomTabs = createBottomTabNavigator()
 
 
 
-export const TabsScreen = () => (
-
+export const TabsScreen = (props) => (
+    Theme = props.theme,
     <BottomTabs.Navigator
         shifting={false}
 
@@ -54,11 +54,10 @@ export const TabsScreen = () => (
 
             //     tabStyle: { backgroundColor: 'orange', borderTopLeftRadius: 50, borderTopRightRadius: 50, height: 50 },
 
-            activeTintColor: 'black',
-            //    // style: { backgroundColor: '#D63447', borderTopLeftRadius: 50, borderTopRightRadius: 50, height: 60 }
+            activeTintColor: props.theme === 'light' ? 'black' : 'white',
+            style: { backgroundColor: props.theme === 'light' ? 'white' : '#000000DD', }
 
         }}
-
 
     >
 
@@ -75,7 +74,7 @@ export const TabsScreen = () => (
                         size={35} />
             }}
 
- 
+
         />
 
 
@@ -91,7 +90,7 @@ export const TabsScreen = () => (
 
 
         />
- 
+
     </BottomTabs.Navigator>
 
 
