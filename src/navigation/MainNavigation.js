@@ -14,8 +14,8 @@ export const MainNavigation = (props) => (
             titile={'ddd'}
             options={{
                 title: i18n.t('NewsFeed'),
-                headerTintColor: 'black',
-                headerStyle: { backgroundColor: '#fff' },
+                headerTintColor: 'white',
+                headerStyle: { backgroundColor: '#000000DD' },
                 headerBackTitleVisible: false,
             }} />
 
@@ -25,8 +25,8 @@ export const MainNavigation = (props) => (
             titile={'ddd'}
             options={{
                 title: i18n.t('Details'),
-                headerTintColor: 'black',
-                headerStyle: { backgroundColor: '#fff' },
+                headerTintColor: 'white',
+                headerStyle: { backgroundColor: '#000000DD' },
                 headerBackTitleVisible: false,
             }} />
 

@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         marginVertical: 25,
         borderRadius: 10,
         justifyContent: 'center',
+        backgroundColor:'white',
         alignSelf: 'center',
         maxHeight: responsiveHeight(240), minHeight: responsiveHeight(240),
         ...Platform.select({

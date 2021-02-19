@@ -8,7 +8,7 @@ export default SearchBar = (props) => {
 
     return (
         <View style={styles.searchSection}>
-            <MaterialIcons style={styles.searchIcon} name="search" size={30} color={'gold'} />
+            <MaterialIcons style={styles.searchIcon} name="search" size={30} color={'black'} />
             <TextInput
                 style={styles.input}
                 placeholder={i18n.t('Search')}
@@ -21,7 +21,7 @@ export default SearchBar = (props) => {
             <TouchableOpacity onPress={props.onClear}>
 
                 <MaterialIcons name='close' onPress={props.onClear}
-                    size={25} style={styles.inlineClose} color={'gold'} />
+                    size={25} style={styles.inlineClose} color={'black'} />
             </TouchableOpacity>
         </View>
         
