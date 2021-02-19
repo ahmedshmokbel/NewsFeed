@@ -1,10 +1,15 @@
 import React from 'react';
-import { Text, Dimensions, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, Dimensions,Platform, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import ResponsiveModule from "../../Utilities/UIHelpers";
 const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
-
-export default NewsFeedComponent = (props) => {
+interface Props {
+    urlToImage: string,
+    title: string,
+    index:number,
+    onPress:()=>void
+}
+const NewsFeedComponent: React.FC <Props> = props => {
 
 
     return (
@@ -17,7 +22,7 @@ export default NewsFeedComponent = (props) => {
                 />
 
             </View>
-            <View style={{ marginTop: responsiveHeight(5) ,marginHorizontal:responsiveWidth(30)}} >
+            <View style={{ marginTop: responsiveHeight(5), marginHorizontal: responsiveWidth(30) }} >
                 <Text style={{ fontSize: 15, fontWeight: 'bold', }}>{props.title}</Text>
 
             </View>
@@ -26,13 +31,14 @@ export default NewsFeedComponent = (props) => {
     )
 }
 
+export default NewsFeedComponent
 const styles = StyleSheet.create({
 
     rederItems: {
         marginTop: responsiveHeight(30),
         borderRadius: 10,
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: 'white', 
         alignSelf: 'center',
         maxHeight: responsiveHeight(220), minHeight: responsiveHeight(220),
         ...Platform.select({
