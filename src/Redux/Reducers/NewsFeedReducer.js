@@ -13,11 +13,10 @@ const NewsFeedReducer = (state = initialState, action) => {
     switch (action.type) {
 
 
-        case CHANGE_LANGUAGE:
+        case GET_NEWS_FEEDS_SUCCESS:
 
             return {
                 ...state,
-
                 isLoading: true
             };
 

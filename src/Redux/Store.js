@@ -5,6 +5,7 @@ import { createStore, combineReducers } from 'redux'
 import AsyncStorage from "@react-native-community/async-storage";
 import { connectionReducer } from "./Reducers/connectionReducer";
 import SettingsReducer from "./Reducers/SettingsReducer";
+import NewsFeedReducer from "./Reducers/NewsFeedReducer";
 
 
 
@@ -13,7 +14,7 @@ export const persistConfig = {
     storage: AsyncStorage
 };
 const rootReducer = combineReducers({
-
+    newsFeed: NewsFeedReducer,
      connectionReducer,
     settings: SettingsReducer,
 })
