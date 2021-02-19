@@ -42,6 +42,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
 
         <View style={[rtlView(), styles.container]} >
             <View style={{}}>
+                
                 {newsFeedState.isLoading ?
                     <ActivityIndicator size='large' color='black' />
                     :
