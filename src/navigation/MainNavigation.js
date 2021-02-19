@@ -25,7 +25,7 @@ export const MainNavigation = (props) => (
             titile={'ddd'}
             options={{
                 title: i18n.t('Details'),
-                headerTintColor: 'white',
+                headerTintColor: 'white',headerShown:false,
                 headerStyle: { backgroundColor: '#D63447' },
                 headerBackTitleVisible: false,
             }} />
