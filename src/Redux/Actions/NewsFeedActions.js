@@ -6,7 +6,7 @@ export const GetNewsFeedAction = (catgory, lang, page) => async dispatch => {
     dispatch({
         type: GET_NEWS_FEEDS,
     });
-    const apiKey = '28b7d42f392b4fc9ae7d979e515f8164'
+    const apiKey = 'cef9a41cabf343f086e1939301ca2e79'
     return new Promise((resolve, reject) => {
         try {
 

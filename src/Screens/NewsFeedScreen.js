@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState, useEffect, useCallback, } from 'react';
 import { View, StyleSheet, FlatList, ActivityIndicator, } from "react-native";
 import { rtlView } from '../Utilities/UIHelpers';
 import ResponsiveModule from '../Utilities/UIHelpers'
@@ -16,6 +16,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
     const [search, setSearch] = useState('')
     const [page, setPage] = useState()
     const [load, setLoad] = useState(false)
+    const [refreshing, setRefreshing] = useState(false);
 
 
 
@@ -24,6 +25,16 @@ export default NewsFeedScreen = ({ navigation, props }) => {
 
     const dispatch = useDispatch()
 
+
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+        dispatch(GetNewsFeedAction('batman', 'en', page)).then(res => {
+            setArticle(res)
+            setFilterArticle(res)
+
+            setRefreshing(false)
+        })
+    }, []);
 
     useEffect(() => {
 
@@ -114,7 +125,8 @@ export default NewsFeedScreen = ({ navigation, props }) => {
                         onEndReachedThreshold={1}
                         onEndReached={loadMoreData}
                         onEndReachedThreshold={0.1}
-
+                        onRefresh={() => onRefresh()}
+                        refreshing={refreshing}
                     />
                     {load == true &&
                         < ActivityIndicator size='large' color='red' />
@@ -135,7 +147,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: responsiveHeight(0),
-         paddingBottom: responsiveHeight(100)
+        paddingBottom: responsiveHeight(100)
 
     },
 
