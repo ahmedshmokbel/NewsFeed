@@ -17,7 +17,7 @@ export default NewsFeedComponent = (props) => {
                 />
 
             </View>
-            <View style={{ marginTop: responsiveHeight(5) ,marginHorizontal:responsiveWidth(15)}} >
+            <View style={{ marginTop: responsiveHeight(5) ,marginHorizontal:responsiveWidth(30)}} >
                 <Text style={{ fontSize: 15, fontWeight: 'bold', }}>{props.title}</Text>
 
             </View>
@@ -29,7 +29,7 @@ export default NewsFeedComponent = (props) => {
 const styles = StyleSheet.create({
 
     rederItems: {
-        marginTop: responsiveHeight(25),
+        marginTop: responsiveHeight(30),
         borderRadius: 10,
         justifyContent: 'center',
         backgroundColor: 'white',

@@ -10,7 +10,7 @@ export const GetNewsFeedAction = (catgory, lang, page) => async dispatch => {
     return new Promise((resolve, reject) => {
         try {
 
-            get_request(`everything/?apiKey=${apiKey}&q=${catgory}&language=${lang}&pageSize=${page}`)
+            get_request(`everything/?apiKey=${apiKey}&q=${catgory}&language=${lang}&page=${page}`)
                 .then(res => {
 
                     if (res.status) {
@@ -27,7 +27,7 @@ export const GetNewsFeedAction = (catgory, lang, page) => async dispatch => {
                     }
                 })
                 .catch(err => {
-                    console.log('resend error:', err)
+                    console.log(' error:', err)
                     dispatch({
                         type: GET_NEWS_FEEDS_FAILED,
                     });

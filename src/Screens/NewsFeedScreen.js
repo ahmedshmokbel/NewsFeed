@@ -14,6 +14,8 @@ export default NewsFeedScreen = ({ navigation, props }) => {
     const newsFeedState = useSelector((state) => state.newsFeed);
     const [article, setArticle] = useState([])
     const [search, setSearch] = useState('')
+    const [page, setPage] = useState()
+
 
     const [filterArticle, setFilterArticle] = useState([])
 
@@ -23,7 +25,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
 
     useEffect(() => {
 
-        dispatch(GetNewsFeedAction('batman', 'en', "8")).then(res => {
+        dispatch(GetNewsFeedAction('batman', 'en', page)).then(res => {
             setArticle(res)
             setFilterArticle(res)
         })
@@ -54,6 +56,20 @@ export default NewsFeedScreen = ({ navigation, props }) => {
     }
 
 
+
+
+    // loadMoreData = () => {
+    //     if (this._isMounted) {
+    //         this.setState({ isLoading: true })
+    //     }
+    //     this.props.dispatch(GetPopularMoviesAction(this.props.Movies, this.props.lang, this.state.Page + 1)).then(res => {
+
+    //         if (this._isMounted) {
+    //             this.setState({ Page: this.state.Page + 1, isLoading: false })
+    //         }
+    //     })
+    // }
+
     const _renderItem = ({ item, index }) => {
 
         return (
@@ -75,7 +91,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
         <View style={[rtlView(), styles.container]} >
             <SearchBar value={search} onChangeText={(text) => Search(text)} onClear={onClear} />
 
-            <View style={{justifyContent: 'center', alignSelf:'center' }}>
+            <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
                 {newsFeedState.isLoading ?
                     <ActivityIndicator size='large' color='black' />
                     :
@@ -105,7 +121,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: responsiveHeight(0), paddingBottom: responsiveHeight(80)
-        
+
     },
 
 });
