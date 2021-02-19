@@ -2,13 +2,20 @@ import React, { useState, useEffect, } from 'react';
 import {  View, StyleSheet, } from "react-native";
 import { rtlView } from '../Utilities/UIHelpers';
 import ResponsiveModule from '../Utilities/UIHelpers'
+import {GetNewsFeedAction,} from '../Redux/Actions/NewsFeedActions'
+import { useDispatch } from 'react-redux';
 const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
 
 
 export default NewsFeedScreen = (props) => {
 
+    const dispatch= useDispatch()
 
+    useEffect(()=>{
+
+        dispatch(GetNewsFeedAction('batman','en',"''"))
+    })
     return (
 
         <View style={[rtlView(), styles.container]} >
