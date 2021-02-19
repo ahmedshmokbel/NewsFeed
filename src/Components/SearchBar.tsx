@@ -4,7 +4,13 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 const WIDTH = Dimensions.get('window').width;
 import i18n from 'i18n-js'
 
-export default SearchBar = (props) => {
+interface Props {
+    value: string,
+    onChangeText: () => void,
+    onClear: () => void
+}
+
+export const SearchBar:React.FC<Props> = (props) => {
 
     return (
         <View style={styles.searchSection}>
@@ -12,7 +18,8 @@ export default SearchBar = (props) => {
             <TextInput
                 style={styles.input}
                 placeholder={i18n.t('Search')}
-                value={props.value} onClear={props.onClear}
+                value={props.value}
+
                 onChangeText={props.onChangeText}
                 underlineColorAndroid="transparent"
                 placeholderTextColor='grey'
@@ -24,7 +31,7 @@ export default SearchBar = (props) => {
                     size={25} style={styles.inlineClose} color={'black'} />
             </TouchableOpacity>
         </View>
-        
+
 
     )
 }
@@ -68,5 +75,5 @@ const styles = StyleSheet.create({
         top: 10,
         marginVertical: 10
     },
-    
+
 });
