@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "UIHelpers",
-        "Redux"
+        "Redux",
+        "NewsFeedScreen"
     ]
 }
