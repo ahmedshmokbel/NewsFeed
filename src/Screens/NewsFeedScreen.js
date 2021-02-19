@@ -21,14 +21,16 @@ export default NewsFeedScreen = ({ navigation, props }) => {
     }, [])
 
 
+ 
+
 
     const _renderItem = ({ item, index }) => {
 
-        return ( 
+        return (
             <NewsFeedComponent
 
                 index={index}
-
+                onPress={() => navigation.navigate('Details', { ArticleData: item })}
                 initialNumToRender={10}
                 navigation={navigation}
                 {...item}

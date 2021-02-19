@@ -8,7 +8,7 @@ export default NewsFeedComponent = (props) => {
 
 
     return (
-        <TouchableOpacity style={styles.rederItems}
+        <TouchableOpacity style={styles.rederItems} onPress={props.onPress}
             key={props.index}>
             <Image
                 source={{ uri: props.urlToImage }}
