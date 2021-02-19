@@ -26,7 +26,7 @@ export interface RTL {
 }
 
 
-export const NewsFeedDetails = ({ route }: any) => {
+ const NewsFeedDetails = ({ route }: any) => {
 
     const [article, setArticle] = useState<articale>({ title: '', author: '', description: '', content: '', url: '', urlToImage: '', publishedAt: '' });
     useEffect(() => {
@@ -65,7 +65,7 @@ export const NewsFeedDetails = ({ route }: any) => {
 
 }
 
-
+export default NewsFeedDetails
 const styles = StyleSheet.create({
     container: {
         flex: 1,

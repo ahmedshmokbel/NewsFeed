@@ -2,7 +2,7 @@ import { get_request } from '../../Network/networkLayer'
 import { GET_NEWS_FEEDS, GET_NEWS_FEEDS_FAILED, GET_NEWS_FEEDS_SUCCESS } from '../Types';
 
 
-export const GetNewsFeedAction = (catgory, lang, page) => async dispatch => {
+export const GetNewsFeedAction = (catgory:string, lang:String, page:Number) => async (dispatch: (arg0: { type: string; articles?: any; }) => void) => {
     dispatch({
         type: GET_NEWS_FEEDS,
     });

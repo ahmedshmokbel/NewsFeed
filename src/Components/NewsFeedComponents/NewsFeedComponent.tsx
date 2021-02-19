@@ -9,7 +9,7 @@ interface Props {
     index:number,
     onPress:()=>void
 }
-export const NewsFeedComponent: React.FC <Props> = props => {
+const NewsFeedComponent: React.FC <Props> = props => {
 
 
     return (
@@ -31,7 +31,7 @@ export const NewsFeedComponent: React.FC <Props> = props => {
     )
 }
 
- 
+export default NewsFeedComponent
 const styles = StyleSheet.create({
 
     rederItems: {

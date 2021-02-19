@@ -6,11 +6,11 @@ import i18n from 'i18n-js'
 
 interface Props {
     value: string,
-    onChangeText: () => void,
+    onChangeText: (text: string) => string,
     onClear: () => void
 }
 
-export const SearchBar:React.FC<Props> = (props) => {
+ const SearchBar : React.FC<Props> = (props) => {
 
     return (
         <View style={styles.searchSection}>
@@ -36,7 +36,7 @@ export const SearchBar:React.FC<Props> = (props) => {
     )
 }
 
-
+export default SearchBar
 
 const styles = StyleSheet.create({
     searchSection: {

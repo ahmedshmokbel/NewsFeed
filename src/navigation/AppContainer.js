@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
  import NoInternetHeader from '../Components/NoInternetHeader'
 import i18n from 'i18n-js';
 import { I18nManager } from 'react-native';
-import { MainNavigation } from './MainNavigation';
+import { TabsScreen } from './MainNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateConnectionStatus } from '../Redux/Actions/ConnectionActions';
  const AppContainer = () => {
@@ -43,7 +43,7 @@ import { updateConnectionStatus } from '../Redux/Actions/ConnectionActions';
     return (
         <NavigationContainer>
             {online ? null : <NoInternetHeader />}
-            <MainNavigation />
+            <TabsScreen />
         </NavigationContainer >
     )
 }

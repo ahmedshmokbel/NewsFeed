@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, } from 'react';
+import React, { useState, useEffect, useCallback, ReactNode, } from 'react';
 import { View, StyleSheet, FlatList, ActivityIndicator, } from "react-native";
 import { rtlView } from '../Utilities/UIHelpers';
 import ResponsiveModule from '../Utilities/UIHelpers'
@@ -6,21 +6,31 @@ import { GetNewsFeedAction, } from '../Redux/Actions/NewsFeedActions'
 import { useDispatch, useSelector } from 'react-redux';
 import NewsFeedComponent from '../Components/NewsFeedComponents/NewsFeedComponent';
 import SearchBar from '../Components/SearchBar';
-const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
+ const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
 
 
-export default NewsFeedScreen = ({ navigation, props }) => {
+interface articale {
+    urlToImage: string,
+    title: string,
+    author: string,
+    description: string,
+    content: string,
+    publishedAt: string,
+    url: string
+
+}
+const NewsFeedScreen = ({ navigation }: any) => {
+
     const newsFeedState = useSelector((state) => state.newsFeed);
-    const [article, setArticle] = useState([])
+    const [article, setArticle] = useState<articale[]>([])
     const [search, setSearch] = useState('')
-    const [page, setPage] = useState()
-    const [load, setLoad] = useState(false)
+    const [page, setPage] = useState<number>(1)
+    const [load, setLoad] = useState<Boolean>(false)
     const [refreshing, setRefreshing] = useState(false);
 
 
-
-    const [filterArticle, setFilterArticle] = useState([])
+    const [filterArticle, setFilterArticle] = useState<articale[]>([])
 
 
     const dispatch = useDispatch()
@@ -48,7 +58,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
 
 
 
-    const Search = (searchText) => {
+    const Search = (searchText: string) => {
 
         setSearch(searchText)
         let filteredData = article.filter(function (item) {
@@ -90,7 +100,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
         }
     }
 
-    const _renderItem = ({ item, index }) => {
+    const _renderItem = ({ item, index }: any) => {
 
         return (
             <NewsFeedComponent
@@ -109,7 +119,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
     return (
 
         <View style={[rtlView(), styles.container]} >
-            <SearchBar value={search} onChangeText={(text) => Search(text)} onClear={onClear} />
+            <SearchBar value={search} onChangeText={(text: string) => Search(text)} onClear={onClear} />
 
             <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
                 {(newsFeedState.isLoading && refreshing == false) &&
@@ -119,12 +129,12 @@ export default NewsFeedScreen = ({ navigation, props }) => {
                     <FlatList
 
                         data={filterArticle}
-                        extraData={newsFeedState.Îarticles}
-                        keyExtractor={(item, index) => item + index}
+                        extraData={newsFeedState.articles}
+                        keyExtractor={(item: articale, index: Number) => index.toString()}
                         renderItem={_renderItem}
                         onEndReachedThreshold={1}
                         onEndReached={loadMoreData}
-                        onEndReachedThreshold={0.1}
+
                         onRefresh={() => onRefresh()}
                         refreshing={refreshing}
                     />
@@ -142,7 +152,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
 
 }
 
-
+export default NewsFeedScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,

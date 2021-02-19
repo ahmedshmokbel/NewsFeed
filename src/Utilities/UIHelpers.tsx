@@ -30,17 +30,17 @@ export const rtlView = () => {
  const fixedHeight = 812;
  const fixedWidth = 375;
  
- function responsiveHeight(originalValue)
+ function responsiveHeight(originalValue:number)
  {
      return ((Dimensions.get('window').height * originalValue) / fixedHeight);
  }
  
-  function responsiveWidth(originalValue)
+  function responsiveWidth(originalValue:number)
  {
      return ((Dimensions.get('window').width * originalValue) / fixedWidth);
  }
  
- function scaleFont(size) {
+ function scaleFont(size:number) {
      const newSize = size * Dimensions.get('window').width / fixedWidth;
      if (Platform.OS === 'ios') {
        return Math.round(PixelRatio.roundToNearestPixel(newSize))
