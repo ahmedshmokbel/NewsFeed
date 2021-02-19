@@ -6,22 +6,40 @@ import moment from 'moment'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
+interface articale {
+    urlToImage: string,
+    title: string,
+    author: string,
+    description: string,
+    content: string,
+    publishedAt: string,
+    url: string
+
+}
+
+export interface RTL {
+    back: string;
+    direction: string;
+    drawerPostion: string;
+    textAlign: string;
+    writingDirection: string;
+}
 
 
-export default NewsFeedDetails = ({ route, navigation }) => {
+export const NewsFeedDetails = ({ route }: any) => {
 
-    const [article, setArticle] = useState({})
+    const [article, setArticle] = useState<articale>({ title: '', author: '', description: '', content: '', url: '', urlToImage: '', publishedAt: '' });
     useEffect(() => {
         setArticle(route.params.ArticleData)
-     }, [])
+    }, [])
 
 
     return (
 
-        <ScrollView style={[rtlView(), styles.container]} >
+        <ScrollView style={[ styles.container]}>
             <Image source={{ uri: article.urlToImage }} style={styles.Img} />
             <View style={{
-                bottom: 0, top:Platform.OS==='ios'? responsiveHeight(278):responsiveHeight(265), height: 80, width: '100%',
+                bottom: 0, top: Platform.OS === 'ios' ? responsiveHeight(278) : responsiveHeight(265), height: 80, width: '100%',
                 position: 'absolute', backgroundColor: '#000000AA', alignSelf: 'center',
                 justifyContent: 'center'
             }}>
