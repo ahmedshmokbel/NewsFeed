@@ -46,14 +46,14 @@ export interface RTL {
                 <Text style={{ fontSize: scaleFont(18), fontWeight: 'bold', alignSelf: 'center', color: 'white' }}>{article.title}</Text>
             </View>
             <View style={{ marginTop: responsiveHeight(10), marginHorizontal: responsiveWidth(15) }}>
-                <Text style={{ fontSize: scaleFont(15), fontWeight: 'bold', color: 'black' }}>{article.author}</Text>
-                <Text style={{ fontSize: scaleFont(15), fontWeight: 'bold', color: 'grey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
-                <Text style={{ fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.description}</Text>
-                <Text style={{ fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.content}</Text>
+                <Text style={{textAlign:'left', fontSize: scaleFont(15), fontWeight: 'bold', color: 'black' }}>{article.author}</Text>
+                <Text style={{textAlign:'left', fontSize: scaleFont(15), fontWeight: 'bold', color: 'grey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
+                <Text style={{textAlign:'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.description}</Text>
+                <Text style={{textAlign:'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.content}</Text>
 
 
                 <TouchableOpacity onPress={() => { Linking.openURL(article.url) }}>
-                    <Text style={{ fontSize: scaleFont(13), color: 'blue' }}>{article.url}</Text>
+                    <Text style={{textAlign:'left', fontSize: scaleFont(13), color: 'blue' }}>{article.url}</Text>
 
                 </TouchableOpacity>
 

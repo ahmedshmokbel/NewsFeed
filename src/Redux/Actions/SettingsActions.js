@@ -1,5 +1,5 @@
 
-import { CHANGE_LANGUAGE, } from "../types";
+import { CHANGE_LANGUAGE, } from "../Types";
  
 
 export const ChangeLanguage = (lang, rtl) => dispatch => {

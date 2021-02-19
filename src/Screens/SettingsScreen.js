@@ -4,7 +4,7 @@ import { I18nManager,View,Text,TouchableOpacity } from 'react-native';
  import { useDispatch,  } from 'react-redux';
 import * as Updates from 'expo-updates';
 import { rtlView } from '../Utilities/UIHelpers';
-
+import {ChangeLanguage} from '../Redux/Actions/SettingsActions'
 
 export default SettingsScreen = () => {
 
