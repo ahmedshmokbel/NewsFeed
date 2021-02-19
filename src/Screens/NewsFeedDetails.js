@@ -13,8 +13,7 @@ export default NewsFeedDetails = ({ route, navigation }) => {
     const [article, setArticle] = useState({})
     useEffect(() => {
         setArticle(route.params.ArticleData)
-        console.log(article);
-    }, [])
+     }, [])
 
 
     return (
