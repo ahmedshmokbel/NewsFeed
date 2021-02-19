@@ -10,12 +10,9 @@ export default NewsFeedComponent = (props) => {
     return (
         <TouchableOpacity style={styles.rederItems}
             key={props.index}>
-
-
             <Image
                 source={{ uri: props.urlToImage }}
                 style={styles.Img}
-
             />
             <View style={{ marginTop: responsiveHeight(5) }} >
                 <Text style={{ fontSize: 15, fontWeight: 'bold', }}>{props.title}</Text>

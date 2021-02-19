@@ -15,7 +15,7 @@ export const persistConfig = {
 };
 const rootReducer = combineReducers({
     newsFeed: NewsFeedReducer,
-     connectionReducer,
+    connectionReducer,
     settings: SettingsReducer,
 })
 

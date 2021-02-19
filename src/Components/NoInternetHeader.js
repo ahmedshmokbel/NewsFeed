@@ -1,14 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View, Platform } from 'react-native'
 import ResponsiveModule from '../Utilities/UIHelpers'
-const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;import * as Animatable from 'react-native-animatable';
-import i18n from 'i18n-js';
+const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
+ import i18n from 'i18n-js';
+import Animated from 'react-native-reanimated';
 
 const NoIntenetHeader = ({ }) => {
     return (
-        <Animatable.View animation="slideInDown" style={styles.noInternetHeader}>
+        <Animated.View animation="slideInDown" style={styles.noInternetHeader}>
             <Text style={styles.noInternetText}>{i18n.t('noInternet')}</Text>
-        </Animatable.View>
+        </Animated.View>
     )
 }
 

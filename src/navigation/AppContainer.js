@@ -1,16 +1,20 @@
 import React, { useState, useEffect, useMemo, useRef, useReducer } from 'react';
 import NetInfo from "@react-native-community/netinfo";
 import { NavigationContainer } from "@react-navigation/native";
-import NoInternetHeader from '../Components/NoInternetHeader'
+ import NoInternetHeader from '../Components/NoInternetHeader'
 import i18n from 'i18n-js';
 import { I18nManager } from 'react-native';
-
-const AppContainer = () => {
+import { MainNavigation } from './MainNavigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateConnectionStatus } from '../Redux/Actions/ConnectionActions';
+ const AppContainer = () => {
     //state 
     const [online, setOnline] = useState(true);
+    const  dispatch = useDispatch()
+    const SettingsState = useSelector((state) => state.settings);
 
     useEffect(() => {
-         
+
         i18n.locale = SettingsState.Lang
 
 
@@ -29,7 +33,7 @@ const AppContainer = () => {
     useEffect(() => {
         // Subscribe for connection status
         const unsubscribe = NetInfo.addEventListener(state => {
-            dispatch(updateConnectionStatus(state.isConnected));
+             dispatch(updateConnectionStatus(state.isConnected));
             setOnline(state.isConnected);
         });
         return () => {
@@ -39,6 +43,7 @@ const AppContainer = () => {
     return (
         <NavigationContainer>
             {online ? null : <NoInternetHeader />}
+            <MainNavigation />
         </NavigationContainer >
     )
 }
