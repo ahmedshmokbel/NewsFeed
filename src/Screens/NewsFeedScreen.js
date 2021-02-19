@@ -15,6 +15,8 @@ export default NewsFeedScreen = ({ navigation, props }) => {
     const [article, setArticle] = useState([])
     const [search, setSearch] = useState('')
     const [page, setPage] = useState()
+    const [load, setLoad] = useState(false)
+
 
 
     const [filterArticle, setFilterArticle] = useState([])
@@ -58,17 +60,24 @@ export default NewsFeedScreen = ({ navigation, props }) => {
 
 
 
-    // loadMoreData = () => {
-    //     if (this._isMounted) {
-    //         this.setState({ isLoading: true })
-    //     }
-    //     this.props.dispatch(GetPopularMoviesAction(this.props.Movies, this.props.lang, this.state.Page + 1)).then(res => {
+    const loadMoreData = () => {
+        if (page <= 5) {
 
-    //         if (this._isMounted) {
-    //             this.setState({ Page: this.state.Page + 1, isLoading: false })
-    //         }
-    //     })
-    // }
+
+            setLoad(true)
+
+            dispatch(GetNewsFeedAction('batman', 'en', page)).then(res => {
+                setPage(page + 1);
+                setArticle([...article, ...res]);
+                setFilterArticle([...filterArticle, ...res])
+                setLoad(false)
+            })
+        } else {
+            console.log('my account is free so the max pages is 5');
+            setLoad(false)
+            return
+        }
+    }
 
     const _renderItem = ({ item, index }) => {
 
@@ -92,9 +101,10 @@ export default NewsFeedScreen = ({ navigation, props }) => {
             <SearchBar value={search} onChangeText={(text) => Search(text)} onClear={onClear} />
 
             <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
-                {newsFeedState.isLoading ?
+                {newsFeedState.isLoading &&
                     <ActivityIndicator size='large' color='black' />
-                    :
+                }
+                <>
                     <FlatList
 
                         data={filterArticle}
@@ -102,12 +112,16 @@ export default NewsFeedScreen = ({ navigation, props }) => {
                         keyExtractor={(item, index) => item + index}
                         renderItem={_renderItem}
                         onEndReachedThreshold={1}
-
+                        onEndReached={loadMoreData}
+                        onEndReachedThreshold={0.1}
 
                     />
+                    {load == true &&
+                        < ActivityIndicator size='large' color='red' />
 
+                    }
+                </>
 
-                }
             </View>
 
         </View >
@@ -120,7 +134,8 @@ export default NewsFeedScreen = ({ navigation, props }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: responsiveHeight(0), paddingBottom: responsiveHeight(80)
+        marginTop: responsiveHeight(0),
+         paddingBottom: responsiveHeight(100)
 
     },
 
