@@ -112,7 +112,7 @@ export default NewsFeedScreen = ({ navigation, props }) => {
             <SearchBar value={search} onChangeText={(text) => Search(text)} onClear={onClear} />
 
             <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
-                {newsFeedState.isLoading &&
+                {(newsFeedState.isLoading && refreshing == false) &&
                     <ActivityIndicator size='large' color='black' />
                 }
                 <>

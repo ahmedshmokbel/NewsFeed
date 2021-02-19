@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "UIHelpers",
         "Redux",
-        "NewsFeedScreen"
+        "NewsFeedScreen",
+        "TypeScript"
     ]
 }

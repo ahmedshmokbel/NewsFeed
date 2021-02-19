@@ -5,8 +5,7 @@ const API_HOST = 'https://newsapi.org/v2/'
 
 export const get_request = (endpoint) => {
   const url = API_HOST + endpoint;
-  console.log(url);
-  return new Promise((resolve, reject) => {
+   return new Promise((resolve, reject) => {
     try {
 
       axios
