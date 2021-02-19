@@ -13,7 +13,7 @@ const NewsFeedReducer = (state = initialState, action) => {
     switch (action.type) {
 
 
-        case GET_NEWS_FEEDS_SUCCESS:
+        case GET_NEWS_FEEDS:
 
             return {
                 ...state,

@@ -1,21 +1,24 @@
 import React, { useState, useEffect, } from 'react';
-import {  View, StyleSheet, } from "react-native";
+import { View, StyleSheet, } from "react-native";
 import { rtlView } from '../Utilities/UIHelpers';
 import ResponsiveModule from '../Utilities/UIHelpers'
-import {GetNewsFeedAction,} from '../Redux/Actions/NewsFeedActions'
-import { useDispatch } from 'react-redux';
+import { GetNewsFeedAction, } from '../Redux/Actions/NewsFeedActions'
+import { useDispatch, useSelector } from 'react-redux';
 const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
 
 
 export default NewsFeedScreen = (props) => {
+    const newsFeedState = useSelector((state) => state.newsFeed);
 
-    const dispatch= useDispatch()
+    const dispatch = useDispatch()
 
-    useEffect(()=>{
 
-        dispatch(GetNewsFeedAction('batman','en',"''"))
-    })
+    useEffect(() => {
+
+        dispatch(GetNewsFeedAction('batman', 'en', "8"))
+        console.log(newsFeedState);
+    },[])
     return (
 
         <View style={[rtlView(), styles.container]} >
@@ -37,5 +40,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 50,
     },
-   
+
 });
