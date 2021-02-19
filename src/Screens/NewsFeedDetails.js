@@ -22,16 +22,18 @@ export default NewsFeedDetails = ({ route, navigation }) => {
         <ScrollView style={[rtlView(), styles.container]} >
             <Image source={{ uri: article.urlToImage }} style={styles.Img} />
             <View style={{
-                bottom: 0, top: responsiveHeight(248), height: 80, width: '100%',
+                bottom: 0, top: responsiveHeight(278), height: 80, width: '100%',
                 position: 'absolute', backgroundColor: '#000000AA', alignSelf: 'center',
                 justifyContent: 'center'
             }}>
                 <Text style={{ fontSize: scaleFont(18), fontWeight: 'bold', alignSelf: 'center', color: 'white' }}>{article.title}</Text>
             </View>
-            <View style={{ marginTop: responsiveHeight(10), marginHorizontal: responsiveWidth(10) }}>
+            <View style={{ marginTop: responsiveHeight(10), marginHorizontal: responsiveWidth(15) }}>
                 <Text style={{ fontSize: scaleFont(15), fontWeight: 'bold', color: 'black' }}>{article.author}</Text>
                 <Text style={{ fontSize: scaleFont(15), fontWeight: 'bold', color: 'grey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
                 <Text style={{ fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.description}</Text>
+                <Text style={{ fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.content}</Text>
+
 
                 <TouchableOpacity onPress={() => { Linking.openURL(article.url) }}>
                     <Text style={{ fontSize: scaleFont(13), color: 'blue' }}>{article.url}</Text>
@@ -54,8 +56,8 @@ const styles = StyleSheet.create({
     },
     Img: {
 
-        maxHeight: responsiveHeight(320),
-        minHeight: responsiveHeight(320),
+        maxHeight: responsiveHeight(350),
+        minHeight: responsiveHeight(350),
         alignSelf: 'center',
         ...Platform.select({
             ios: {
