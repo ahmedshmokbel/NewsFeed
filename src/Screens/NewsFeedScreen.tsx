@@ -23,6 +23,8 @@ interface articale {
 const NewsFeedScreen = ({ navigation }: any) => {
 
     const newsFeedState = useSelector((state) => state.newsFeed);
+    const Lang = useSelector((state) => state.settings).Lang;
+
     const [article, setArticle] = useState<articale[]>([])
     const [search, setSearch] = useState('')
     const [page, setPage] = useState<number>(1)
@@ -38,7 +40,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
     const onRefresh = useCallback(() => {
         setRefreshing(true);
-        dispatch(GetNewsFeedAction('batman', 'en', page)).then(res => {
+        dispatch(GetNewsFeedAction('batman', Lang, page)).then(res => {
             setArticle(res)
             setFilterArticle(res)
 
@@ -48,7 +50,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
     useEffect(() => {
 
-        dispatch(GetNewsFeedAction('batman', 'en', page)).then(res => {
+        dispatch(GetNewsFeedAction('batman', Lang, page)).then(res => {
             setArticle(res)
             setFilterArticle(res)
         })

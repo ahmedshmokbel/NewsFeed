@@ -26,34 +26,35 @@ export interface RTL {
 }
 
 
- const NewsFeedDetails = ({ route }: any) => {
+const NewsFeedDetails = ({ route }: any) => {
 
-    const [article, setArticle] = useState<articale>({ title: '', author: '', description: '', content: '', url: '', urlToImage: '', publishedAt: '' });
+    const [article, setArticle] = useState<articale>({ title: '', author: '', description: '', content: '', url: '', urlToImage:'', publishedAt: '' });
     useEffect(() => {
         setArticle(route.params.ArticleData)
     }, [])
 
+    console.log(article.urlToImage);
 
     return (
 
-        <ScrollView style={[ styles.container]}>
+        <ScrollView style={[styles.container]}>
             <Image source={{ uri: article.urlToImage }} style={styles.Img} />
             <View style={{
                 bottom: 0, top: Platform.OS === 'ios' ? responsiveHeight(278) : responsiveHeight(265), height: 80, width: '100%',
                 position: 'absolute', backgroundColor: '#000000AA', alignSelf: 'center',
                 justifyContent: 'center'
             }}>
-                <Text style={{ fontSize: scaleFont(18), fontWeight: 'bold', alignSelf: 'center', color: 'white' }}>{article.title}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(18), fontWeight: 'bold', alignSelf: 'center', color: 'white' }}>{article.title}</Text>
             </View>
             <View style={{ marginTop: responsiveHeight(10), marginHorizontal: responsiveWidth(15) }}>
-                <Text style={{textAlign:'left', fontSize: scaleFont(15), fontWeight: 'bold', color: 'black' }}>{article.author}</Text>
-                <Text style={{textAlign:'left', fontSize: scaleFont(15), fontWeight: 'bold', color: 'grey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
-                <Text style={{textAlign:'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.description}</Text>
-                <Text style={{textAlign:'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.content}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: 'black' }}>{article.author}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: 'grey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.description}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10) }}>{article.content}</Text>
 
 
                 <TouchableOpacity onPress={() => { Linking.openURL(article.url) }}>
-                    <Text style={{textAlign:'left', fontSize: scaleFont(13), color: 'blue' }}>{article.url}</Text>
+                    <Text style={{ textAlign: 'left', fontSize: scaleFont(13), color: 'blue' }}>{article.url}</Text>
 
                 </TouchableOpacity>
 
@@ -69,7 +70,7 @@ export default NewsFeedDetails
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
+        paddingBottom: 200,
     },
     Img: {
 
