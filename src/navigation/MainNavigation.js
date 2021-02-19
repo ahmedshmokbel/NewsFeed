@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import IconTabs from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import NewsFeedScreen from '../Screens/NewsFeedScreen';
 import i18n from 'i18n-js';
@@ -53,7 +54,7 @@ export const TabsScreen = () => (
 
             //     tabStyle: { backgroundColor: 'orange', borderTopLeftRadius: 50, borderTopRightRadius: 50, height: 50 },
 
-            activeTintColor: '#b40000',
+            activeTintColor: 'black',
             //    // style: { backgroundColor: '#D63447', borderTopLeftRadius: 50, borderTopRightRadius: 50, height: 60 }
 
         }}
@@ -70,7 +71,7 @@ export const TabsScreen = () => (
                 tabBarIcon: (tintcolor) =>
                     <IconTabs
                         color={tintcolor.color}
-                        name='home'
+                        name='newspaper'
                         size={35} />
             }}
 
@@ -82,9 +83,9 @@ export const TabsScreen = () => (
             options={{
                 title: i18n.t('Settings'),
                 tabBarIcon: (tintcolor) =>
-                    <IconTabs
+                    <Icon
                         color={tintcolor.color}
-                        name='shopping'
+                        name='settings'
                         size={30} />
             }}
 

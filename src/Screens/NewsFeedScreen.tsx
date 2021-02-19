@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback, ReactNode, } from 'react';
-import { View, StyleSheet, FlatList, ActivityIndicator, } from "react-native";
+import { View, StyleSheet, FlatList, ActivityIndicator, useColorScheme, StatusBar, } from "react-native";
 import { rtlView } from '../Utilities/UIHelpers';
 import ResponsiveModule from '../Utilities/UIHelpers'
 import { GetNewsFeedAction, } from '../Redux/Actions/NewsFeedActions'
 import { useDispatch, useSelector } from 'react-redux';
 import NewsFeedComponent from '../Components/NewsFeedComponents/NewsFeedComponent';
 import SearchBar from '../Components/SearchBar';
- const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
+const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
 
 
@@ -30,8 +30,13 @@ const NewsFeedScreen = ({ navigation }: any) => {
     const [page, setPage] = useState<number>(1)
     const [load, setLoad] = useState<Boolean>(false)
     const [refreshing, setRefreshing] = useState(false);
+    const colorScheme = useColorScheme();
 
+     const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
+    const themeContainerStyle =
+        colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
 
+ 
     const [filterArticle, setFilterArticle] = useState<articale[]>([])
 
 
@@ -120,8 +125,8 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
     return (
 
-        <View style={[rtlView(), styles.container]} >
-            <SearchBar value={search} onChangeText={(text: string) => Search(text)} onClear={onClear} />
+        <View style={[rtlView(), styles.container, themeContainerStyle]} >
+             <SearchBar value={search} onChangeText={(text: string) => Search(text)} onClear={onClear} />
 
             <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
                 {(newsFeedState.isLoading && refreshing == false) &&
@@ -162,5 +167,5 @@ const styles = StyleSheet.create({
         paddingBottom: responsiveHeight(100)
 
     },
-
+    
 });

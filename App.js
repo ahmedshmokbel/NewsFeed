@@ -6,14 +6,18 @@ import { PersistGate } from 'redux-persist/integration/react';
 import AppContainer from './src/navigation/AppContainer';
 import store, { persistor } from './src/Redux/Store';
 import translate from './src/Localization/Translate'
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 export default function App() {
+  
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <AppContainer />
-      </PersistGate>
-    </Provider>
+    <AppearanceProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppContainer />
+        </PersistGate>
+      </Provider>
+    </AppearanceProvider>
 
   );
 }
