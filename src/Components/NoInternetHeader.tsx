@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated';
 
 const NoIntenetHeader = ({ }) => {
     return (
-        <Animated.View animation="slideInDown" style={styles.noInternetHeader}>
+        <Animated.View  style={styles.noInternetHeader}>
             <Text style={styles.noInternetText}>{i18n.t('noInternet')}</Text>
         </Animated.View>
     )
