@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import NewsFeedComponent from '../Components/NewsFeedComponents/NewsFeedComponent';
 import SearchBar from '../Components/SearchBar';
 import { ThemeStyle } from '../Utilities/Theme';
+import { RootState } from '../Redux/Store';
+import { ThunkDispatch } from 'redux-thunk';
+import { Action } from 'redux';
 const { responsiveWidth, responsiveHeight, scaleFont } = ResponsiveModule;
 
 
@@ -18,13 +21,14 @@ interface articale {
     description: string,
     content: string,
     publishedAt: string,
-    url: string
+    url: string,
+    
 
 }
 const NewsFeedScreen = ({ navigation }: any) => {
 
-    const newsFeedState = useSelector((state) => state.newsFeed);
-    const Lang = useSelector((state) => state.settings).Lang;
+    const newsFeedState = useSelector((state: RootState) => state.newsFeed);
+    const Lang = useSelector((state: RootState) => state.settings).Lang;
 
     const [article, setArticle] = useState<articale[]>([])
     const [search, setSearch] = useState('')
@@ -32,12 +36,12 @@ const NewsFeedScreen = ({ navigation }: any) => {
     const [load, setLoad] = useState<Boolean>(false)
     const [refreshing, setRefreshing] = useState(false);
     const colorScheme = useColorScheme();
- 
- 
+
+
     const [filterArticle, setFilterArticle] = useState<articale[]>([])
 
+    const dispatch = useDispatch<ThunkDispatch<RootState, {}, Action<string>>>();
 
-    const dispatch = useDispatch()
 
 
     const onRefresh = useCallback(() => {
@@ -122,8 +126,8 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
     return (
 
-        <View style={[rtlView(), styles.container, colorScheme === 'light'?ThemeStyle.lightContainer:ThemeStyle.darkContainer]} >
-             <SearchBar value={search} onChangeText={(text: string) => Search(text)} onClear={onClear} />
+        <View style={[styles.container, colorScheme === 'light' ? ThemeStyle.lightContainer : ThemeStyle.darkContainer]} >
+            <SearchBar value={search} onChangeText={(text: string) => Search(text)} onClear={onClear} />
 
             <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
                 {(newsFeedState.isLoading && refreshing == false) &&
@@ -164,5 +168,5 @@ const styles = StyleSheet.create({
         paddingBottom: responsiveHeight(100)
 
     },
-    
+
 });

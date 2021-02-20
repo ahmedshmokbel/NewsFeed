@@ -26,5 +26,8 @@ const reducer = persistReducer(
     persistConfig,
     (rootReducer)
 );
-export default store = createStore(reducer, applyMiddleware(...middlewares));
+
+export type RootState = ReturnType<typeof rootReducer>
+const store = createStore(reducer, applyMiddleware(...middlewares));
+export default store
 export const persistor = persistStore(store);

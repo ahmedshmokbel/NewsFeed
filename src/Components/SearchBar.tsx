@@ -7,15 +7,15 @@ import { useColorScheme } from "react-native-appearance";
 
 interface Props {
     value: string,
-    onChangeText: (text: string) => string,
+    onChangeText: (text: string) => void,
     onClear: () => void
 }
 
- const SearchBar : React.FC<Props> = (props) => {
-const colorScheme=useColorScheme()
+const SearchBar: React.FC<Props> = (props) => {
+    const colorScheme = useColorScheme()
     return (
         <View style={styles.searchSection}>
-            <MaterialIcons style={styles.searchIcon} name="search" size={30} color={colorScheme==='light'?'black':'white'} />
+            <MaterialIcons style={styles.searchIcon} name="search" size={30} color={colorScheme === 'light' ? 'black' : 'white'} />
             <TextInput
                 style={styles.input}
                 placeholder={i18n.t('Search')}
@@ -23,13 +23,13 @@ const colorScheme=useColorScheme()
 
                 onChangeText={props.onChangeText}
                 underlineColorAndroid="transparent"
-                placeholderTextColor={colorScheme==='light'?'black':'white'}
+                placeholderTextColor={colorScheme === 'light' ? 'black' : 'white'}
             />
 
             <TouchableOpacity onPress={props.onClear}>
 
                 <MaterialIcons name='close' onPress={props.onClear}
-                    size={25} style={styles.inlineClose} color={colorScheme==='light'?'black':'white'} />
+                    size={25} style={styles.inlineClose} color={colorScheme === 'light' ? 'black' : 'white'} />
             </TouchableOpacity>
         </View>
 
