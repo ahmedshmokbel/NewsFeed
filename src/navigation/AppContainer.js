@@ -8,8 +8,7 @@ import { TabsScreen } from './MainNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateConnectionStatus } from '../Redux/Actions/ConnectionActions';
 import { useColorScheme } from 'react-native-appearance';
-import * as Linking from 'expo-linking';
-
+ 
 const AppContainer = (props) => {
     //state 
     const [online, setOnline] = useState(true);
@@ -19,9 +18,7 @@ const AppContainer = (props) => {
     useEffect(() => {
 
 
-
-        Linking.addEventListener('url', callback)
-
+ 
 
         i18n.locale = SettingsState.Lang
 
@@ -37,13 +34,7 @@ const AppContainer = (props) => {
 
 
     })
-    function callback(event) {
-
-
-        let data = Linking.parse(event.url);
-        console.log("data: ", data);
-    }
-
+   
     useEffect(() => {
         // Subscribe for connection status
         const unsubscribe = NetInfo.addEventListener(state => {
