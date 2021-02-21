@@ -86,7 +86,6 @@ const NewsFeedScreen = ({ navigation }: any) => {
         setFilterArticle(article)
     }
 
-    //exp://192.168.1.2:19000/stack/article?name=Maya Phillips
 
 
     const loadMoreData = () => {

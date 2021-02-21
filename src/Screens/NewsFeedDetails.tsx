@@ -66,39 +66,38 @@ const NewsFeedDetails = ({ route }: any) => {
 
     }
     return (
-        <>
-        </>
-        // <ScrollView style={[styles.container, colorScheme === 'light' ? ThemeStyle.lightContainer : ThemeStyle.darkContainer]}>
 
-        //     {
-        //         article.urlToImage ?
-        //             <Image source={{ uri: article.urlToImage }} style={styles.Img} />
-        //             :
-        //             <>
-        //             </>
-        //     }
-        //     <View style={{
-        //         bottom: 0, top: Platform.OS === 'ios' ? responsiveHeight(278) : responsiveHeight(265), height: 80, width: '100%',
-        //         position: 'absolute', backgroundColor: '#000000AA', alignSelf: 'center',
-        //         justifyContent: 'center'
-        //     }}>
-        //         <Text style={{ textAlign: 'left', fontSize: scaleFont(18), fontWeight: 'bold', alignSelf: 'center', color: 'white' }}>{article.title}</Text>
-        //     </View>
-        //     <View style={{ marginTop: responsiveHeight(10), marginHorizontal: responsiveWidth(15) }}>
-        //         <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: colorScheme === 'light' ? 'black' : 'white' }}>{article.author}</Text>
-        //         <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: colorScheme === 'light' ? 'grey' : 'lightgrey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
-        //         <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10), color: colorScheme === 'light' ? 'black' : 'white' }}>{article.description}</Text>
-        //         <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10), color: colorScheme === 'light' ? 'black' : 'white' }}>{article.content}</Text>
+        <ScrollView style={[styles.container, colorScheme === 'light' ? ThemeStyle.lightContainer : ThemeStyle.darkContainer]}>
+
+            {
+                article.urlToImage ?
+                    <Image source={{ uri: article.urlToImage }} style={styles.Img} />
+                    :
+                    <>
+                    </>
+            }
+            <View style={{
+                bottom: 0, top: Platform.OS === 'ios' ? responsiveHeight(278) : responsiveHeight(265), height: 80, width: '100%',
+                position: 'absolute', backgroundColor: '#000000AA', alignSelf: 'center',
+                justifyContent: 'center'
+            }}>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(18), fontWeight: 'bold', alignSelf: 'center', color: 'white' }}>{article.title}</Text>
+            </View>
+            <View style={{ marginTop: responsiveHeight(10), marginHorizontal: responsiveWidth(15) }}>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: colorScheme === 'light' ? 'black' : 'white' }}>{article.author}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(15), fontWeight: 'bold', color: colorScheme === 'light' ? 'grey' : 'lightgrey', marginVertical: responsiveHeight(10) }}>{moment(article.publishedAt).format('DD MMM YYYY')}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10), color: colorScheme === 'light' ? 'black' : 'white' }}>{article.description}</Text>
+                <Text style={{ textAlign: 'left', fontSize: scaleFont(13), marginBottom: responsiveHeight(10), color: colorScheme === 'light' ? 'black' : 'white' }}>{article.content}</Text>
 
 
-        //         <TouchableOpacity onPress={() => { Linking.openURL(article.url) }}>
-        //             <Text style={{ textAlign: 'left', fontSize: scaleFont(13), color: colorScheme === 'light' ? 'blue' : 'lightblue' }}>{article.url}</Text>
+                <TouchableOpacity onPress={() => { Linking.openURL(article.url) }}>
+                    <Text style={{ textAlign: 'left', fontSize: scaleFont(13), color: colorScheme === 'light' ? 'blue' : 'lightblue' }}>{article.url}</Text>
 
-        //         </TouchableOpacity>
+                </TouchableOpacity>
 
-        //     </View>
+            </View>
 
-        // </ScrollView >
+        </ScrollView >
 
     );
 
