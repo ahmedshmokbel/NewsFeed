@@ -13,11 +13,10 @@ const BottomTabs = createBottomTabNavigator()
 var Theme = ''
 
 const NewsFeedStackScreen = (props) => (
-    console.log(Theme),
-    <NewsFeedStack.Navigator  >
+     <NewsFeedStack.Navigator  >
         <NewsFeedStack.Screen name='NewsFeed'
             component={NewsFeedScreen}
-            titile={'ddd'}
+            
             options={{
                 title: i18n.t('NewsFeed'),
                 headerTintColor: Theme === 'light' ? '#000000DD' : 'white',
@@ -28,7 +27,7 @@ const NewsFeedStackScreen = (props) => (
 
         <NewsFeedStack.Screen name='Details'
             component={NewsFeedDetails}
-            titile={'ddd'}
+            
             options={{
                 title: i18n.t('Details'),
                 headerTintColor: Theme === 'light' ? '#000000DD' : 'white',
@@ -48,7 +47,7 @@ export const TabsScreen = (props) => (
     Theme = props.theme,
     <BottomTabs.Navigator
         shifting={false}
-
+        initialRouteName='MainTab'
         tabBarOptions={{
             gestureEnabled: false,
 
@@ -78,7 +77,7 @@ export const TabsScreen = (props) => (
         />
 
 
-        <BottomTabs.Screen name='OrderTab' component={SettingsScreen}
+        <BottomTabs.Screen name='Settings' component={SettingsScreen}
             options={{
                 title: i18n.t('Settings'),
                 tabBarIcon: (tintcolor) =>

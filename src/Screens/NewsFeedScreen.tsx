@@ -46,7 +46,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
     const onRefresh = useCallback(() => {
         setRefreshing(true);
-        dispatch(GetNewsFeedAction('batman', Lang, page)).then(res => {
+        dispatch(GetNewsFeedAction('bitcoin', Lang, page)).then(res => {
             setArticle(res)
             setFilterArticle(res)
 
@@ -56,7 +56,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
     useEffect(() => {
 
-        dispatch(GetNewsFeedAction('batman', Lang, page)).then(res => {
+        dispatch(GetNewsFeedAction('bitcoin', Lang, page)).then(res => {
             setArticle(res)
             setFilterArticle(res)
         })
@@ -86,7 +86,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
         setFilterArticle(article)
     }
 
-
+    //exp://192.168.1.2:19000/stack/article?name=Maya Phillips
 
 
     const loadMoreData = () => {
@@ -95,7 +95,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
             setLoad(true)
 
-            dispatch(GetNewsFeedAction('batman', 'en', page)).then(res => {
+            dispatch(GetNewsFeedAction('bitcoin', Lang, page)).then(res => {
                 setPage(page + 1);
                 setArticle([...article, ...res]);
                 setFilterArticle([...filterArticle, ...res])
@@ -114,7 +114,7 @@ const NewsFeedScreen = ({ navigation }: any) => {
             <NewsFeedComponent
 
                 index={index}
-                onPress={() => navigation.navigate('Details', { ArticleData: item })}
+                onPress={() => navigation.navigate('Details', { name: item.author ,item:item})}
                 initialNumToRender={10}
                 navigation={navigation}
                 {...item}

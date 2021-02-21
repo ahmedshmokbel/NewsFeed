@@ -8,13 +8,20 @@ import { TabsScreen } from './MainNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateConnectionStatus } from '../Redux/Actions/ConnectionActions';
 import { useColorScheme } from 'react-native-appearance';
-const AppContainer = () => {
+import * as Linking from 'expo-linking';
+
+const AppContainer = (props) => {
     //state 
     const [online, setOnline] = useState(true);
     const dispatch = useDispatch()
     const SettingsState = useSelector((state) => state.settings);
     const colorScheme = useColorScheme()
     useEffect(() => {
+
+
+
+        Linking.addEventListener('url', callback)
+
 
         i18n.locale = SettingsState.Lang
 
@@ -30,6 +37,12 @@ const AppContainer = () => {
 
 
     })
+    function callback(event) {
+
+
+        let data = Linking.parse(event.url);
+        console.log("data: ", data);
+    }
 
     useEffect(() => {
         // Subscribe for connection status
@@ -42,7 +55,7 @@ const AppContainer = () => {
         };
     }, [online])
     return (
-        <NavigationContainer>
+        <NavigationContainer linking={props.linking}>
             {online ? null : <NoInternetHeader />}
             <TabsScreen theme={colorScheme} />
         </NavigationContainer >

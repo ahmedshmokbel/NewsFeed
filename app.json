@@ -10,7 +10,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "scheme": "NewsFeed",
+    "scheme": "mynewsfeed",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
