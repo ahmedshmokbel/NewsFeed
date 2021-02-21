@@ -90,8 +90,6 @@ const NewsFeedScreen = ({ navigation }: any) => {
 
     const loadMoreData = () => {
         if (page <= 5) {
-
-
             setLoad(true)
 
             dispatch(GetNewsFeedAction('bitcoin', Lang, page)).then(res => {
